@@ -19,19 +19,29 @@ public class PostDataService {
     }
 
     public PostData save(PostData postData){
+
         return postRepository.save(postData);
     }
 
-    public List<PostData> saveAll(List<Post> postList){
-        List<PostData> postDatas = new ArrayList<>();
-        for (int i=0;i<postList.toArray().length;i++) {
+    public List<PostData> saveAll(Post[] postList){
+        ArrayList<PostData> postDatas = new ArrayList<>();
+        for (Post post:postList) {
             PostData postData = new PostData();
-            postData.setPostId(postList.get(i).getId());
-            postData.setUserId(postList.get(i).getUserId());
-            postData.setTitle(postList.get(i).getTitle());
-            postData.setBody(postList.get(i).getBody());
+            postData.setPostId(post.getId());
+            postData.setBody(post.getBody());
+            postData.setTitle(post.getTitle());
             postDatas.add(postData);
         }
+//        for (int i=0;i<postList.toArray().length;i++) {
+//            PostData postData = new PostData();
+//            postData.setPostId(postList.get(i).getId());
+//            postData.setUserId(postList.get(i).getUserId());
+//            postData.setTitle(postList.get(i).getTitle());
+//            postData.setBody(postList.get(i).getBody());
+//            postDatas.add(postData);
+//        }
+
+
 
 //        List<PostData> postDataList = postList
 //                .stream()
